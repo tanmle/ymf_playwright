@@ -1,6 +1,7 @@
 import { Page } from '@playwright/test';
 import { BasePage } from './base.page';
 import { DropdownElement } from '../elements/dropdown.element';
+import { step } from 'utils/step';
 
 export class CorporateRegisterPage extends BasePage {
   constructor(page: Page) {
@@ -29,38 +30,47 @@ export class CorporateRegisterPage extends BasePage {
   lblEmailError = this.page.locator('label[for="email"] ~ label');
   private bntSubmit = this.page.getByRole('button', { name: 'SUBMIT' });
 
+  @step('Select inquiry type')
   async selectInquiryType(optionText: string) {
     await new DropdownElement(this.page, this.ddlInquiryType).selectOption(optionText);
   }
 
+  @step('Enter company name')
   async enterCompanyName(companyName: string) {
     await this.txtCompanyName.fill(companyName);
   }
 
+  @step('Select industry')
   async selectIndustry(optionText: string) {
     await new DropdownElement(this.page, this.ddlIndustry).selectOption(optionText);
   }
 
+  @step('Enter contact person')
   async enterContactPerson(contactPerson: string) {
     await this.txtContactPerson.fill(contactPerson);
   }
 
+  @step('Enter job title')
   async enterJobTitle(jobTitle: string) {
     await this.txtJobTitle.fill(jobTitle);
   }
 
+  @step('Select phone number extension')
   async selectPhoneNumberExt(optionText: string) {
     await new DropdownElement(this.page, this.ddlPhoneNumberExt).selectOption(optionText);
   }
 
+  @step('Enter phone number')
   async enterPhoneNumber(phoneNumber: string) {
     await this.txtPhoneNumber.fill(phoneNumber);
   }
 
+  @step('Enter email')
   async enterEmail(email: string) {
     await this.txtEmail.fill(email);
   }
 
+  @step('Click on Submit button')
   async clickOnSubmit() {
     await this.bntSubmit.click();
   }

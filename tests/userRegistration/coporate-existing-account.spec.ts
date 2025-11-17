@@ -61,9 +61,7 @@ test.describe(
       await expect(corporateRegisterPage.lblPhoneNumberError).toHaveText(
         'Please enter valid phone number.',
       );
-      await expect(corporateRegisterPage.lblEmailError).toHaveText(
-        'Please enter your email.',
-      );
+      await expect(corporateRegisterPage.lblEmailError).toHaveText('Please enter your email.');
     });
 
     test('Verify that validation error displays when user submits registration without selecting Inquiry Type', async ({}) => {

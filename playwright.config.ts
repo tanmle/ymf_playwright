@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+import * as os from 'node:os';
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -9,7 +10,22 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
-  reporter: [['line'], ['allure-playwright'], ['html', { open: 'never' }]],
+  reporter: [
+    ['line'],
+    [
+      'allure-playwright',
+      {
+        detail: false,
+        suiteTitle: false,
+        environmentInfo: {
+          Platform: os.platform(),
+          Env: 'https://carshare.yomafleet.com/',
+          NodeVersion: process.version,
+        },
+      },
+    ],
+    ['html', { open: 'never' }],
+  ],
   use: {
     baseURL: 'https://carshare.yomafleet.com/',
     trace: 'off',

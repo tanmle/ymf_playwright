@@ -2,6 +2,7 @@ import { Page } from '@playwright/test';
 import { BasePage } from './base.page';
 import { DropdownElement } from 'elements/dropdown.element';
 import { CalendarElement } from 'elements/calendar.element';
+import { step } from 'utils/step';
 
 export class CarFindingPage extends BasePage {
   constructor(page: Page) {
@@ -21,34 +22,41 @@ export class CarFindingPage extends BasePage {
   private btnFindACar = this.page.locator('#SimulateButton');
   imgCarResult = this.page.locator("img[data-nimg='responsive']");
 
+  @step('Select pickup location')
   async selectPickupLocation(optionText: string) {
     await new DropdownElement(this.page, this.ddlPickupLocation).selectOption(optionText);
   }
 
+  @step('Check return to different location')
   async checkReturnToDifferentLocation() {
     await this.ckbReturnToDifferentLocation.check();
   }
 
+  @step('Select pickup date')
   async selectPickUpDate(pickupDate: string) {
     await this.txtPickupDate.click();
     await new CalendarElement(this.page).selectDate(pickupDate);
   }
 
+  @step('Enter pickup time')
   async enterPickupTime(pickupTime: string) {
     await this.txtPickupTime.click();
     await new CalendarElement(this.page).selectTime(pickupTime);
   }
 
+  @step('Select return date')
   async selectReturnDate(returnDate: string) {
     await this.txtReturnDate.click();
     await new CalendarElement(this.page).selectDate(returnDate);
   }
 
+  @step('Enter return time')
   async enterReturnTime(returnTime: string) {
     await this.txtReturnTime.click();
     await new CalendarElement(this.page).selectTime(returnTime);
   }
 
+  @step('Click on Find A Car button')
   async clickOnFindACar() {
     await Promise.all([
       this.page.waitForResponse(

@@ -1,5 +1,6 @@
 import { Page } from '@playwright/test';
 import { BasePage } from './base.page';
+import { step } from 'utils/step';
 
 export class OTPVerificationPage extends BasePage {
   constructor(page: Page) {
@@ -27,6 +28,7 @@ export class OTPVerificationPage extends BasePage {
   private btnVerify = this.page.locator('#verifying');
   private btnOk = this.page.getByRole('button', { name: 'OK' });
 
+  @step('Enter OTP')
   async enterOTP(otp: string) {
     await this.txtFirstOTPDigit.fill(otp[0]);
     await this.txtSecondOTPDigit.fill(otp[1]);
@@ -36,11 +38,13 @@ export class OTPVerificationPage extends BasePage {
     await this.txtSixthOTPDigit.fill(otp[5]);
   }
 
+  @step('Click on Verify button')
   async clickOnVerify() {
     await this.btnVerify.click();
     //Account verified
   }
 
+  @step('Click on OK button')
   async clickOnOk() {
     await this.btnOk.click();
   }

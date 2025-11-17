@@ -1,5 +1,6 @@
 import { Page } from '@playwright/test';
 import { BasePage } from './base.page';
+import { step } from 'utils/step';
 
 export class RegisterPage extends BasePage {
   constructor(page: Page) {
@@ -23,18 +24,22 @@ export class RegisterPage extends BasePage {
     .locator('label')
     .filter({ hasText: 'I want to join my company' });
 
+  @step('Select new account option')
   async selectNewAccountOption() {
     await this.ckbNewAccount.click();
   }
 
+  @step('Select existing account option')
   async selectExistingAccountOption() {
     await this.ckbExistingAccount.click();
   }
 
+  @step('Click on Individual Join Now button')
   async clickOnIndividualJoinNow() {
     await this.btnIndividualJoinNow.click();
   }
 
+  @step('Click on Corporate Join Now button')
   async clickOnCorporateJoinNow() {
     await this.btnCorporateJoinNow.click();
   }
