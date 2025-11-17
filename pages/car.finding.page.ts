@@ -20,7 +20,7 @@ export class CarFindingPage extends BasePage {
   private txtReturnDate = this.page.locator("[name='return_date']");
   private txtReturnTime = this.page.locator("[name='return_time']");
   private btnFindACar = this.page.locator('#SimulateButton');
-  imgCarResult = this.page.locator("img[data-nimg='responsive']");
+  imgCarResult = this.page.locator("img[data-nimg='responsive']").first();
 
   @step('Select pickup location')
   async selectPickupLocation(optionText: string) {

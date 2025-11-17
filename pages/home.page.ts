@@ -1,6 +1,5 @@
 import { Page } from '@playwright/test';
 import { BasePage } from './base.page';
-import { step } from 'utils/step';
 
 export class HomePage extends BasePage {
   constructor(page: Page) {
@@ -17,17 +16,14 @@ export class HomePage extends BasePage {
   // Footer
   lnkFooterLinks = this.page.locator("footer a[href^='/']");
 
-  @step('Click on Find A Car link')
   async clickOnFindACar() {
     await this.lnkFindACar.click();
   }
 
-  @step('Click on Sign In link')
   async clickOnSignIn() {
     await this.lnkSignIn.click();
   }
 
-  @step('Click on Sign Up link')
   async clickOnSignUp() {
     await this.lnkSignUp.click();
   }

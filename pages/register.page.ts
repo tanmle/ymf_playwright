@@ -29,17 +29,14 @@ export class RegisterPage extends BasePage {
     await this.ckbNewAccount.click();
   }
 
-  @step('Select existing account option')
   async selectExistingAccountOption() {
     await this.ckbExistingAccount.click();
   }
 
-  @step('Click on Individual Join Now button')
   async clickOnIndividualJoinNow() {
     await this.btnIndividualJoinNow.click();
   }
 
-  @step('Click on Corporate Join Now button')
   async clickOnCorporateJoinNow() {
     await this.btnCorporateJoinNow.click();
   }
