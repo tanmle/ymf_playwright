@@ -30,18 +30,23 @@ export class OTPVerificationPage extends BasePage {
 
   @step('Enter OTP')
   async enterOTP(otp: string) {
+    await this.txtFirstOTPDigit.click();
     await this.txtFirstOTPDigit.fill(otp[0]);
+    await this.txtSecondOTPDigit.click();
     await this.txtSecondOTPDigit.fill(otp[1]);
+    await this.txtThirdOTPDigit.click();
     await this.txtThirdOTPDigit.fill(otp[2]);
+    await this.txtFourthOTPDigit.click();
     await this.txtFourthOTPDigit.fill(otp[3]);
+    await this.txtFifthOTPDigit.click();
     await this.txtFifthOTPDigit.fill(otp[4]);
+    await this.txtSixthOTPDigit.click();
     await this.txtSixthOTPDigit.fill(otp[5]);
   }
 
   @step('Click on Verify button')
   async clickOnVerify() {
     await this.btnVerify.click();
-    //Account verified
   }
 
   @step('Click on OK button')

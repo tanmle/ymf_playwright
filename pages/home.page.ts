@@ -11,6 +11,8 @@ export class HomePage extends BasePage {
   private lnkFindACar = this.page.getByRole('navigation').getByRole('link', { name: 'Find A Car' });
   private lnkSignIn = this.page.getByRole('navigation').getByRole('link', { name: 'Sign In' });
   private lnkSignUp = this.page.getByRole('navigation').getByRole('link', { name: 'Sign Up' });
+  dynamicbtnProfileIcon = (fullName: string) =>
+    this.page.getByRole('button', { name: `Profile ${fullName}` });
 
   // Footer
   lnkFooterLinks = this.page.locator("footer a[href^='/']");
